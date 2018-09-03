@@ -12,9 +12,9 @@ class MapScreen extends Component {
     }
 
     createMarker = (eventObj) => {
-    this.setState({
-        markerLocation: eventObj.nativeEvent.coordinate
-    });
+        this.setState({
+            markerLocation: eventObj.nativeEvent.coordinate
+        });
     }
 
     renderMarker = () => {
@@ -32,16 +32,16 @@ class MapScreen extends Component {
         return (
             <View style={styles.container}>
                 <MapView 
-                provider={PROVIDER_GOOGLE}
-                style={styles.map}
-                region={{
-                    latitude: 50.431782,
-                    longitude: 30.516382,
-                    latitudeDelta: 0.015,
-                    longitudeDelta: 0.0121,
-                }}
-                zoomControlEnabled={true}
-                onLongPress={this.createMarker}
+                    provider={PROVIDER_GOOGLE}
+                    style={styles.map}
+                    initialRegion={{
+                        latitude: 50.431782,
+                        longitude: 30.516382,
+                        latitudeDelta: 0.015,
+                        longitudeDelta: 0.0121,
+                    }}
+                    zoomControlEnabled={true}
+                    onLongPress={this.createMarker}
                 >
                 {this.renderMarker()}
                 </MapView>

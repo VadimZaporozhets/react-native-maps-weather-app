@@ -60,10 +60,14 @@ class WeatherScreen extends Component {
                         return result.types[0] == 'locality'
                     });
 
-                    const city = cityObj.formatted_address.split(',')[0]; 
-                    this.setState({
-                        cityName: city
-                    }, this.fetchWeatherForCity);
+                    if (cityObj) {
+                        const city = cityObj.formatted_address.split(',')[0]; 
+                        this.setState({
+                            cityName: city
+                        }, this.fetchWeatherForCity);
+                    } else {
+                        this.setState({error: 'It is not a city'});
+                    }
                 } else {
                     this.setState({error: res.error_message})
                 }
